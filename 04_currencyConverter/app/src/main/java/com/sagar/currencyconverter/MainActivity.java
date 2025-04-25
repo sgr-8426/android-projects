@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        AdapterView.OnItemSelectedListener spinnerListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 convertCurrency();
@@ -77,18 +77,11 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
                 convertCurrency();
             }
-        });
-        to.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                convertCurrency();
-            }
+        };
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                convertCurrency();
-            }
-        });
+        from.setOnItemSelectedListener(spinnerListener);
+        to.setOnItemSelectedListener(spinnerListener);
+
     }
 
     private void setupConversionRates() {
